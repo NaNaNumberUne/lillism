@@ -1,0 +1,30 @@
+#floating-thinker-sprite {
+    display: none; /* Hidden by default */
+    position: fixed; /* Keep it locked relative to the screen window */
+    
+    /* POSITIONING: Moves it to the left side and anchors it relative to the center text column */
+    right: auto; /* Clears the old right-side setting */
+    left: calc(50% - 540px); /* Adjust this number to move it closer or further from the text */
+    bottom: 140px; /* Height from the bottom of the screen */
+    
+    /* SIZE: Made it significantly larger */
+    width: 140px; /* Increased from 90px to make it bigger */
+    height: auto !important; /* Keeps aspect ratio intact so it doesn't squish */
+    
+    object-fit: contain;
+    z-index: 999999; /* Stays on top of text and background templates */
+    pointer-events: none; /* Prevents it from blocking mouse clicks */
+    animation: floatUpDown 2.5s ease-in-out infinite;
+}
+
+/* Handles showing the sprite cleanly during generation */
+#floating-thinker-sprite.active-thinking {
+    display: block !important;
+}
+
+/* Gentle floating animation */
+@keyframes floatUpDown {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
